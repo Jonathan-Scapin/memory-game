@@ -1,3 +1,4 @@
+
 # memory-game
 
 ### Objectif
@@ -16,8 +17,7 @@ Le but est de créer le jeu Memory.
 ### Specs 
 
 
-* HTML/CSS(SASS)/JS 
+* HTML/CSS/JS 
 * Persistance des données PHP ou Node.js
 * Charte graphique libre
 * Déploiement​ optionnel (Docker)
-
