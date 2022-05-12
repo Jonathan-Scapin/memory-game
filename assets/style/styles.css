@@ -1,7 +1,6 @@
 html {
     width: 100%;
     height: 100%;
-    /* background: linear-gradient(200deg, #0bc3a7 0%, #fffdd8 50%, #d83a36 100%); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,24 +34,10 @@ html {
     transform: translate(-50%, -50%);
 }
 
-.controls {
+.stats {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-button {
-    background: #d83a36;
-    color: #FFF;
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: 0;
-    cursor: pointer;
-    font-size: 18pt;
-}
-
-.disabled {
-    color: #FFF;
+    justify-content: space-between;
+    margin: 20px 0;
 }
 
 .stats {
@@ -102,6 +87,8 @@ button {
     width: 100%;
     height: 100%;
     background: #282A3A;
+    background-image: url('../img/logo-oclock.svg');
+    background-size: contain;
     transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
     backface-visibility: hidden;
 }
@@ -145,4 +132,13 @@ button {
 
 .highlight {
     color: #6f00fc;
+}
+
+#progress_bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2em;
+    width: 0%;
+    background-color: #151000;
 }

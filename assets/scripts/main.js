@@ -3,6 +3,7 @@ const selectors = {
     board: document.querySelector('.board'),
     moves: document.querySelector('.moves'),
     timer: document.querySelector('.timer'),
+    progress: document.getElementById('progress_bar'),
     start: document.querySelector('button'),
     win: document.querySelector('.win')
 }
@@ -14,7 +15,6 @@ const state = {
     totalTime: 0,
     loop: null,
 }
-
 
 const shuffle = array => {
     const clonedArray = [...array]
@@ -72,13 +72,24 @@ const generateGame = () => {
 
 const startGame = () => {
     state.gameStarted = true
-    selectors.start.classList.add('disabled')
 
     state.loop = setInterval(() => {
         state.totalTime++
 
         selectors.moves.innerText = `${state.totalFlips} coups`
         selectors.timer.innerText = `temps: ${state.totalTime} sec`
+        selectors.progress.style.width = (state.totalTime / 1.20) + '%';
+
+        function counter() {
+            if (state.totalTime === 120) {
+                alert("You're loose !");
+                setTimeout(() => {
+                location.reload();
+                }, 1500);
+                
+            }
+        }
+        counter();
     }, 1000)
 }
 
@@ -115,15 +126,15 @@ const flipCard = card => {
         }, 1000)
     }
 
-    // If there are no more cards that we can flip, we won the game
+    // S'il ny' a plus de cartes à retourner, nous avons gagné la partie
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
         setTimeout(() => {
             selectors.boardContainer.classList.add('flipped')
             selectors.win.innerHTML = `
                 <span class="win-text">
                     You won!<br />
-                    with <span class="highlight">${state.totalFlips}</span> moves<br />
-                    under <span class="highlight">${state.totalTime}</span> seconds
+                    with <span class="highlight">${state.totalFlips}</span> coups<br />
+                    under <span class="highlight">${state.totalTime}</span> secondes
                 </span>
             `
             // methode ajax pour transmettre les données dans la base.
@@ -131,7 +142,7 @@ const flipCard = card => {
                 url: 'assets/php/functions.php',
                 type: 'POST',
                 data: {
-                    score: temps
+                    score: state.totalTime
                 },
 
                 success: function (code_html, statut) {

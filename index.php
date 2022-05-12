@@ -1,3 +1,8 @@
+<?php
+    // contrôle errors
+    // error_reporting(E_ALL);
+    // ini_set("display_errors", 1);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,18 +16,15 @@
 </head>
 
 <body>
-<p><progress id="avancement" value="0" max="120"></progress></p>    
-      <div id="compte_a_rebours"> </div>
+    <div>
+        <div id="progress_bar"></div>
+    </div>
     <div class="game">
-        <div>
-            <p> Meilleur temps (secondes) : <?php include('php/functions.php'); ?>
-            </p>
-        </div>
         <div class="controls">
-            <button>Commencez !!!</button>
             <div class="stats">
                 <div class="moves">0 coups</div>
                 <div class="timer">temps: 0 sec</div>
+                <div>Meilleur temps (secondes) : <?php include ('../memory-game/assets/php/functions.php'); ?></div>               
             </div>
         </div>
         <div class="board-container">
@@ -31,7 +33,6 @@
         </div>
     </div>
     <script src="assets/scripts/main.js"></script>
-    <script src="assets/scripts/progress.js"></script>
 </body>
 
 </html>
